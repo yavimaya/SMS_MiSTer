@@ -161,10 +161,7 @@ parameter CONF_STR = {
 	"C,Cheats;",
 	"H1OO,Cheats enabled,ON,OFF;",
 	"-;",
-	"OUV,UserIO Joystick,Off,DB9MD,DB15 ;",
-	"OT,UserIO Players, 1 Player,2 Players;",
-	"OS,Native Joysticks,No,Yes;",
-	"-;",
+
 	"D0R6,Load Backup RAM;",
 	"D0R7,Save Backup RAM;",
 	"D0ON,Autosave,OFF,ON;",
@@ -189,6 +186,10 @@ parameter CONF_STR = {
 
 	"P2,Input;",
 	"P2-;",
+	"P2OUV,UserIO Joystick,Off,DB9MD,DB15 ;",
+	"P2OT,UserIO Players, 1 Player,2 Players;",
+	"P2OS,Native Joysticks,No,Yes;",
+	"-;",
 	"P2O1,Swap joysticks,No,Yes;",
 	"P2OE,Multitap,Disabled,Port1;",
 	"D3P2OH,Pause Btn Combo,No,Yes;",
@@ -614,7 +615,7 @@ always @(posedge clk_sys) begin
 		joya_th <=  swap ? 1'b1 : joyser_th;
 		joyb_th <=  swap ? joyser_th : 1'b1;
 
-		USER_OUT <= {swap ? joyb_tr_out : joya_tr_out, 1'b1, swap ? joyb_th_out : joya_th_out, 4'b1111, };
+		USER_OUT <= {swap ? joyb_tr_out : joya_tr_out, 1'b1, swap ? joyb_th_out : joya_th_out, 5'b11111, };
 
 	end else begin
 		joya <= ~joy[jcnt];
@@ -637,7 +638,7 @@ always @(posedge clk_sys) begin
 
 		if(reset | ~status[14]) jcnt <= 0;
 	
-		USER_OUT <= JOY_FLAG[2] ? {3'b111,JOY_SPLIT,3'b111,JOY_MDSEL} : JOY_FLAG[1] ? {6'b111111,JOY_CLK,JOY_LOAD} : '1;
+		USER_OUT <= JOY_FLAG[2] ? {3'b111,JOY_SPLIT,3'b111,JOY_MDSEL} : JOY_FLAG[1] ? {6'b111111,JOY_CLK,JOY_LOAD} : 7'b1111111;
 	end
 	
 	if(gun_en) begin
