@@ -1,20 +1,21 @@
-# Sega Master System and Game Gear for the [MiSTer](https://github.com/MiSTer-devel/Main_MiSTer/wiki) and [MiST](https://github.com/mist-devel/mist-board/wiki) boards
+A new option has been added in the OSD menu of this core called "UserIO Joystick" that allows playing with joysticks of Mega Drive/Genesis (DB9) or Neo-Geo/Supergun (DB15). This new feature is disabled by default, therefore you must enter the menu (F12) the first time to activate it and save the config if you want to keep it on for the next time.
 
-### Installation:
-* Copy the *.rbf file at the root of the SD card.
-* Copy *.SMS ROMs into SMS folder.
+You can choose native original gamepads (SMS) or non original (megadrive). On non original option button maping is A=1/Start, B=2.
 
-### Download precompiled binaries at:
-* For MiSTer, go to [releases](https://github.com/MiSTer-devel/SMS_MISTer/tree/master/releases) folder.
-* For MiST, go to [mist-binaries](https://github.com/mist-devel/mist-binaries/tree/master/cores/sms).
+For controlling everything with the UserIO Joysticks (including the OSD menu), is also needed to update the files: MiSTer and menu.rbf from the root of the SD card. The link to these files is here (download the latest release):
 
-### Notes:
-* Some games come in .gg format but are in fact SMS games. Rename the .gg extention to .sms or .bin to fix them.
-  These games are mostly listed in this page [SMSpower-SMS-GG list](http://www.smspower.org/Tags/SMS-GG).
-* The "Aspect ratio" doesn't do much in PAL mode, that's normal
-* The "Region" parameter toggle some hardware features that are specific to the different console models.
-  Some localized games need these modifications to work properly
-* Each game cartridge comes with a specific mapper, which description is not included in the .gg ou .sms file.
-  The core has a special logic to automatically determine which mapper needs to be used, but some games make
-  a good effort to make this logic fail. The "Disable mappers" parameter permits to force the usage 
-  of the most used sega mapper. 
+MiSTer_Main: 
+https://github.com/yavimaya/Main_MiSTer/tree/master/releases
+
+Core Menu:
+https://github.com/yavimaya/Menu_MiSTer/tree/master/releases
+
+
+Menu control from DB9 joystick: 
+Start+C-> Show OSD menu  |  A-> Enter  |  B-> Esc
+
+
+
+
+Also you can get more information about DB9 fork from this link: 
+https://github.com/antoniovillena/MiSTer_DB9.git
