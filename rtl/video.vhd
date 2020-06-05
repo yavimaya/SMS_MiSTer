@@ -29,6 +29,7 @@ architecture Behavioral of video is
 
 	signal vbl_st,vbl_end: std_logic_vector(8 downto 0);
 	signal hbl_st,hbl_end: std_logic_vector(8 downto 0);
+	constant HS_OFF			: integer := 3;
 begin
 
 	process (clk)
@@ -99,12 +100,12 @@ begin
 
 				hcount <= hcount + 1;
 				-- HCounter: 0-295, 466-511 = 342 steps
-				if hcount = 295 then
-					hcount <= conv_std_logic_vector(466,9);
+				if hcount = 295 + HS_OFF then
+					hcount <= conv_std_logic_vector(466,9) +HS_OFF;
 				end if;
-				if hcount = 280 then
+				if hcount = 280 +HS_OFF then
 					hsync <= '1';
-				elsif hcount = 474 then
+				elsif hcount = 474 +HS_OFF then
 					hsync <= '0';
 				end if;
 			end if;
