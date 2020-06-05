@@ -151,6 +151,12 @@ assign BUTTONS   = 0;
 assign VIDEO_ARX = status[9] ? 8'd16 : gg ? 8'd10 : 8'd4;
 assign VIDEO_ARY = status[9] ? 8'd9  : gg ? 8'd9  : 8'd3;
 
+// Status Bit Map:
+// 0          1          2          3
+// 0123456789 0123456789 0123456789 01
+// 0123456789 ABCDEFGHIJ KLMNOPQRST UV
+// XXXXX XXXX XXXXXXXXXX XX X  XXX           //example of used slots
+
 `include "build_id.v"
 parameter CONF_STR = {
 	"SMS;;",
